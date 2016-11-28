@@ -14,5 +14,4 @@ Collate:
     mfa.R
     plot-mfa.R
     other-mfa-methods.R
-    hello.R
 RoxygenNote: 5.0.1
