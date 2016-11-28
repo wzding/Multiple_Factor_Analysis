@@ -14,10 +14,11 @@ ev.summary.mfa <- function(x,digit=3, ...) {
   CumulativeEigenvalue <- cumsum(Eigenvalue)
   Inertia <- Eigenvalue/sum(Eigenvalue) * 100
   CumulativeInertia <-cumsum(Inertia)
-  ev <- t(data.frame(Component, SingularValue, Eigenvalue,
-                     CumulativeEigenvalue,Inertia,CumulativeInertia))
-  print(ev)
-  invisible(x)
+  x=as.matrix(rbind(SingularValue,Eigenvalue,CumulativeEigenvalue,Inertia,CumulativeInertia))
+  x=t(x)
+  colnames(x) = c("SingularValue","Eigenvalue","cumulative","Intertia","cumulative")
+  rownames(x) = paste(1:length(eigen))
+  as.table(x)
 }
 
 

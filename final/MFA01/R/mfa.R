@@ -1,4 +1,4 @@
-#' @title MFA
+#' @title Multiple Factor Analysis
 #' @description Creates an object of class \code{"mfa"}
 #' @param data data set (matrix or data frame)
 #' @param sets list of vector indicating the sets of variables (i.e. the blocks)

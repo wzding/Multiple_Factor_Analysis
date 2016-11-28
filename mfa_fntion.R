@@ -17,7 +17,7 @@ setMethod(
     cat("The first two principle components for the grand matrix: (Delta): \n")
     print(x@Delta) # will be a 2 by 1 array, 2 is rank of the grand matrix
   }
-  
+
 )
 # plot 1: common factor
 plotFactor= function(x,...){
@@ -32,7 +32,7 @@ plotFactor= function(x,...){
 setGeneric("plotFactor")
 
 plotEig=function(x,...){
-  
+
   colors=c("black","red","blue","yellow","pink","orange","green","purple")
   barplot(x@eig,main="eigenvalues histogram",col = colors,
           names.arg =paste(x@eig) )

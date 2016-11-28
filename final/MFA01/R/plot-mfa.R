@@ -10,7 +10,7 @@
 #' @examples
 #'  \dontrun{
 #'  # create a \code{"mfa"} and plot its common factor scores
-#'  a <- mfa()
+#'  a <- MFA()
 #'
 #'  plot(a)
 #'  }
