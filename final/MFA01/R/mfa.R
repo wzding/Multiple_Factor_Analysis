@@ -16,13 +16,8 @@
 #' mfa1 <- MFA()
 #'
 #' # another mfa
-#' mfa2 <- MFA(c('h', 't'))
+#' mfa2 <- MFA(ncomps=2)
 #'
-#' # us cent
-#' cent1 <- coin(c('lincoln', 'shield'))
-#'
-#' # loaded coin
-#' loaded <- coin(prob = c(0.7, 0.3))
 
 MFA <- function(data = get(load("data/wine.rda")),
                 sets =list(2:7,8:13,14:19,20:24,25:30,31:35,36:39,40:45,46:50,51:54),
@@ -168,26 +163,15 @@ print.mfa <- function(x, ...) {
   invisible(x)
 }
 
-############################################################
-a<-MFA()
-
-source('R/plot-mfa.R')
-source('R/other-mfa-methods.R')
-ctr.obs(a,obs=NULL,comp=1)
-ctr.obs(a)
-
-ctr.var(a,var=NULL,comp=1)
-ctr.var(a)
-
-ctr.table(a)
-ctr.table(a,table = 1,comp=2)
-
-############################################################
-
 #' @rdname mfa
 #' @param x an R object
 #' @export
 is.mfa <- function(x) {
   is(x, "mfa")
 }
+
+
+############### Below is function testing
+# source('R/other-mfa-methods.R')
+# a <- MFA()
 
