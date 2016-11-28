@@ -1,5 +1,6 @@
 # shource the file that support this app
-#source("../mfa_fntion.R")
+setwd("/Users/Shiying/Dropbox/BERKELEY_study/2016_Fall/02_STAT243/243_proj/Stats-243/shiny")
+source("../mfa_fntion.R")
 
 # or add the library when the package is ready
 library(shiny)
@@ -18,14 +19,14 @@ shinyServer(function(input, output) {
     # 4.loadings
     # result <-
     switch(input$Plot,
-           "Eigenvalue Bar Chart"=mfa@eig_plot,
-           "Common Factor Score"=mfa@cfs_plot,
-           "Partial Factor Score"=mfa@pfs_plot,
-           "Loadings"=mfa@loading_plot)
+           "Eigenvalue Bar Chart"=mfa@plotEig,
+           "Common Factor Score"=mfa@plotFactor,
+           "Partial Factor Score"=mfa@plotPfs,
+           "Loadings"=mfa@plotLoad)
     
   })
   output$result_plot<-renderPlot({
-    plot(plotChoice())
+    plotChoice(mfa1)
   })
   
 })
