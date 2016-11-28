@@ -1,6 +1,6 @@
 setClass(
   Class = "mfa",
-  representation = representation(F="matrix")
+  representation = representation(F="matrix",eig="numeric",sv="numeric")
 )
 
 # print
@@ -32,11 +32,10 @@ plotFactor= function(x,...){
 setGeneric("plotFactor")
 
 plotEig=function(x,...){
-  Fmat=x@F
-  xcor=Fmat[,1]
-  ycor=Fmat[,2]
-  colors=c("black","red","blue")
-  hist(xcor,main="eigenvalues histogram")
+  
+  colors=c("black","red","blue","yellow","pink","orange","green","purple")
+  barplot(x@eig,main="eigenvalues histogram",col = colors,
+          names.arg =paste(x@eig) )
 }
 setGeneric("plotEig")
 
@@ -60,3 +59,18 @@ plotLoad=function(x,...){
   title("Loadings")
 }
 setGeneric("plotLoad")
+
+eigTable=function(x,...){
+  singVal=x@sv
+  eigen=x@eig
+  cum=cumsum(eigen)
+  inertia=round(eigen/sum(eigen)*100)
+  cum_iner=cumsum(inertia)
+  x=as.matrix(rbind(singVal,eigen,cum,inertia,cum_iner))
+  x=t(x)
+  colnames(x) = c("SingularValue","Eigenvalue","cumulative","Intertia","cumulative")
+  rownames(x) = paste(1:length(eigen))
+  as.table(x)
+}
+setGeneric("eigTable")
+
