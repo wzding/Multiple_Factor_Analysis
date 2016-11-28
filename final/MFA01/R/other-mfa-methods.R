@@ -58,7 +58,7 @@ ctr.var.mfa <- function(x, var=NULL,comp=NULL,  ...) {
   t <- x$fl^2
   ctr <- sweep(t,1,x$weights,'*')
   if (is.null(var) & is.null(comp)){
-    return(ctr)
+      return(ctr)
   } else if(!is.null(var) & is.null(comp) ){
       return(ctr[var,])
   }
@@ -89,7 +89,7 @@ ctr.table.mfa <- function(x, table = NULL,comp=NULL,...) {
     ctr.table[[i]]  <- apply(ctr.slt[[i]], 2,sum)}
 
   if (is.null(table) & is.null(comp)){
-    return(ctr.table)
+      return(ctr.table)
   } else if(!is.null(table) & is.null(comp) ){
       return(ctr[[table]])
   }
