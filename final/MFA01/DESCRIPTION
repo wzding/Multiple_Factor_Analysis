@@ -3,10 +3,10 @@ Type: Package
 Title: Multiple factor analysis
 Version: 0.1.0
 Author: person("Ding. Wz", "Zhou.Sy","Liu. S","Zhang. Hc"
-              email = "wzding@berkeley.edu",
-              role = c("aut","aut","aut","aut")
+    email = "wzding@berkeley.edu",
+    role = c("aut","aut","aut","aut")
 Maintainer: The package maintainer <wzding@berkeley.edu>
-Description:  Provides functions to conduct multiple factor analysis
+Description: Provides functions to conduct multiple factor analysis
 License: BSD
 Encoding: UTF-8
 LazyData: true
@@ -14,3 +14,4 @@ Collate:
     mfa.R
     plot-mfa.R
     other-mfa-methods.R
+RoxygenNote: 5.0.1
