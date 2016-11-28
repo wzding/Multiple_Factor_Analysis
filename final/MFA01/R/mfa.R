@@ -174,4 +174,5 @@ is.mfa <- function(x) {
 ############### Below is function testing
 # source('R/other-mfa-methods.R')
 # a <- MFA()
-
+# ctr.obs(a,obs=1)
+# ctr.obs.mfa(a,obs = 1)

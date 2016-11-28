@@ -27,7 +27,7 @@ ev.summary.mfa <- function(x,digit=3, ...) {
 #' @param obs which observation to analyze
 #' @param comp which component to analyze
 #' @export
-ctr.obs <- function(x) UseMethod("ctr.obs")
+ctr.obs <- function(x,obs=NULL,comp=NULL,...) UseMethod("ctr.obs")
 
 #' @export
 ctr.obs.mfa <- function(x,obs=NULL,comp=NULL,  ...) {
@@ -51,7 +51,7 @@ ctr.obs.mfa <- function(x,obs=NULL,comp=NULL,  ...) {
 #' @param var which variable to analyze
 #' @param comp which component to analyze
 #' @export
-ctr.var <- function(x) UseMethod("ctr.var")
+ctr.var <- function(x, var=NULL,comp=NULL,  ...) UseMethod("ctr.var")
 
 #' @export
 ctr.var.mfa <- function(x, var=NULL,comp=NULL,  ...) {
@@ -77,7 +77,7 @@ ctr.var.mfa <- function(x, var=NULL,comp=NULL,  ...) {
 #' @param var which table/block to analyze
 #' @param comp which component to analyze
 #' @export
-ctr.table <- function(x) UseMethod("ctr.table")
+ctr.table <- function(x, table = NULL,comp=NULL,...) UseMethod("ctr.table")
 
 #' @export
 ctr.table.mfa <- function(x, table = NULL,comp=NULL,...) {
