@@ -12,14 +12,16 @@ shinyUI(fluidPage(
       selectInput("Plot","Choose a figure to plot:",
                   choices = c("Eigenvalue Bar Chart","Common Factor Score",
                               "Partial Factor Score","Loadings"),
-                  selected = "Common Factor Score")
+                  selected = "Eigenvalue Bar Chart")
       
     ),
     
     # Show a plot of the generated distribution
     mainPanel(
       textOutput("text"),
-      plotOutput("result_plot")
+      plotOutput("result_plot"),
+      textOutput("text_table"),
+      dataTableOutput("eigTbl")
     )
   )
 ))
