@@ -166,9 +166,9 @@ print.mfa <- function(x, ...) {
 #' @rdname mfa
 #' @param x an R object
 #' @export
-is.mfa <- function(x) {
-  is(x, "mfa")
-}
+#is.mfa <- function(x) {
+ # is(x, "mfa")
+#}
 
 
 ############### Below is function testing

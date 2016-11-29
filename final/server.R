@@ -30,19 +30,23 @@ shinyServer(function(input, output) {
   output$text_table<-renderText({
     paste("Table: Eigenvalues and Percentage of Explained Inertia of the MFA. ")
   })
+  
+  output$cont_table<-renderText({
+    paste("Table: Controbution Table")
+  })
 
   output$result_plot<-renderPlot({
     mfa1=MFA()
     switch(input$Plot,
-           "Eigenvalue Bar Chart"=plot.mfa(mfa1),
-           "Common Factor Score"=plot.mfa(mfa1),
-           "Partial Factor Score"=plot.mfa(mfa1,FALSE,pfs=TRUE,num=1),
-           "Loadings"=plot.mfa(mfa1,FALSE,pfl=TRUE,num=1))
+           "Eigenvalue Bar Chart"=plot(mfa1),
+           "Common Factor Score"=plot(mfa1),
+           "Partial Factor Score"=plot(mfa1,FALSE,pfs=TRUE,num=1),
+           "Loadings"=plot(mfa1,FALSE,pfl=TRUE,num=1))
   })
 
   output$eigTbl<-renderTable({
     mfa1=plotChoice()
-    ev.summary.mfa(mfa1)
+    ev.summary(mfa1)
   })
 
 })
