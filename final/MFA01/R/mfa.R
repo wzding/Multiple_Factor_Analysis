@@ -158,7 +158,7 @@ print.mfa <- function(x, ...) {
   cat("First two eigenvalues: ", x$eigen[1:2], "\n")
   cat("First component of common factor scores: ","\n",x$cfs[,1], "\n")
   cat("Facor loadings for the first table (1st component): ", "\n",
-      x$pfl[1:length(x$assessors[[1]]),1], "\n")
+      x$fl[1:length(x$assessors[[1]]),1], "\n")
   # cat("Partial factor score for the first table (1st component): ", x$pfs[[1]], "\n")
   invisible(x)
 }
