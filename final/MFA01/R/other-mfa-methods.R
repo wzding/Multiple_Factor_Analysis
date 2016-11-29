@@ -3,7 +3,7 @@
 #' @param x an R object
 #' @param digit number of decimal digit in print output
 #' @export
-ev.summary <- function(x) UseMethod("ev.summary")
+ev.summary <- function(x,digit=3, ...) UseMethod("ev.summary")
 
 #' @export
 ev.summary.mfa <- function(x,digit=3, ...) {
@@ -14,7 +14,7 @@ ev.summary.mfa <- function(x,digit=3, ...) {
   CumulativeEigenvalue <- cumsum(Eigenvalue)
   Inertia <- Eigenvalue/sum(Eigenvalue) * 100
   CumulativeInertia <-cumsum(Inertia)
-  x=data.frame(SingularValue,Eigenvalue,CumulativeEigenvalue,round(Inertia),round(CumulativeInertia))
+  x <- data.frame(SingularValue,Eigenvalue,CumulativeEigenvalue,round(Inertia),round(CumulativeInertia))
   print(x)
 }
 
