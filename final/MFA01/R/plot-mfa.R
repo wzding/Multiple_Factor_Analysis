@@ -20,15 +20,15 @@ plot.mfa <- function(x, cfs = TRUE, pfs = FALSE, pfl = FALSE, num=1,eig=FALSE,..
   plot(x$cfs[,1:2],xaxt="n", yaxt="n",
        xlab="1st component",
        ylab="2nd component",
-       bty="n",cex=1.5,col=c(rep("red",4),rep("green",4),rep("blue",4)),
-       pch = c(rep(15,4), rep(16,4), rep(17,4)))
+       bty="n",cex=1.5)
+  # pch = c(rep(15,4), rep(16,4), rep(17,4))
   axis(side=1,pos = 0)
   axis(side=2,pos = 0)
   abline(v=0,h=0,col = "gray70", lwd = 1.5)
   # text(GSVD.factor.score[,1],GSVD.factor.score[,2],labels = label ,cex=0.8,pos=3)
   title(main="Common Facor scores")
-  legend("bottomright",pch = c(15, 16, 17),col = c("red", "green","blue"),
-         c("Canada","France","New Zealand"))
+  # legend("bottomright",pch = c(15, 16, 17),col = c("red", "green","blue"),
+  #        c("Canada","France","New Zealand"))
 
   if(pfs && pfl){
     pfs_scale <- rescale(x$pfs,sqrt(x$eigen))
