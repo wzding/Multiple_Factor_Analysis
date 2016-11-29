@@ -11,10 +11,11 @@ shinyUI(fluidPage(
     sidebarPanel(
       selectInput("Plot","Choose a figure to plot:",
                   choices = c("Eigenvalue Bar Chart","Common Factor Score",
-                              "Partial Factor Score","Factor Loading"),
+                              "Partial Factor Score","Factor Loading",
+                              "Partial Factor Score and Factor Loading"),
                   selected = "Common Factor Score"),
-      sliderInput("tester","(Note: only useful when selecting plot partial
-                  factor score or factor loading)",min=1,max=10,value=1)
+      sliderInput("tester","Note: only useful when selecting partial
+                  factor score or factor loading",min=1,max=10,value=1)
 
     ),
 
