@@ -16,3 +16,4 @@ Collate:
     other-mfa-methods.R
     hello.R
 RoxygenNote: 5.0.1
+Suggests: testthat

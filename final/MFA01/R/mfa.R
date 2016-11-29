@@ -62,7 +62,6 @@ scale_data <- function(d,s,ctr=TRUE,sc=TRUE) {
   return(d)
 }
 
-
 # private function to check number of components
 check_n <- function(n){
   if (!is.null(n)){
