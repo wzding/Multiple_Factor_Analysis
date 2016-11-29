@@ -94,7 +94,71 @@ plot(mfa_obj)
 One can also specify the options for the 'plot' function to view partial factor score and variable loadings by
 
 ```{r,eval=FALSE}
-plot(mfa_obj,FALSE,pfs=TRUE,num=2)
+plot(mfa_obj,FALSE,pfl=TRUE,pfs=TRUE,num=2)
 ```
 
-### Heading 3
+![partial_factor_score_loading](pfs_pfl_plot.png)
+
+### Related methods: contributions
+
+The summaries of eigenvalues can be obtained by
+
+```{r,eval=FALSE}
+ev.summary(mfa_obj)
+```
+
+![eigenvalue_summary_table](eig_table.png)
+
+Other derived output from MFA is a series of decriptive statistics called _contributions_. Three types of contributions can be computed 
+
+1. contribution of an observation to a dimension
+1. contribution of a variable to a dimension
+1. contribution of a table to a dimension
+
+These can be computed by calling
+```{r,eval=FALSE}
+ctr.obs(mfa_obj)
+ctr.var(mfa_obj)
+ctr.table(mfa_obj)
+```
+
+Note, the output of the results are suppressed for clarity of the document.
+
+### Coefficients to study the Between-Table structure
+
+The $R_V$ coefficient is used to study the similarity between two tables.
+It can be obtained by 
+```{r,eval=FALSE}
+table1=mfa_obj$assessors[[1]]
+table2=mfa_obj$assessors[[2]]
+RV(table1,table2)
+```
+
+[1] 0.868
+
+The $R_V$ table, $L_g$ coefficient and table can also be computed
+```{r,eval=FALSE}
+data=cbind(mfa_obj$assessors[[1]],mfa_obj$assessors[[2]],mfa_obj$assessors[[3]])
+RV_table(data)
+Lg(table1,table2)
+Lg_table(data)
+```
+
+![R_V_table_Lg_etc](rv.png)
+
+### Bootstrap
+
+The package also provides 'bootStrap' function such that one can use to estimate the stability of the compromise factor score.
+
+```{r,eval=FALSE}
+bootStrap(mfa_obj)
+```
+
+## shiny app
+
+A shiny application is provided for interative visualization of the plots and tables.
+One can open the file 'server.R' or 'ui.R', check the path and then run the app to see the results.
+
+The interface of the app looks like
+
+

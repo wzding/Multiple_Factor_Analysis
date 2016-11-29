@@ -6,6 +6,7 @@ library(shiny)
 # source("/Users/Shiying/Dropbox/BERKELEY_study/2016_Fall/02_STAT243/243_proj/Stats-243/final/install.R")
 source("C:/Users/Emma/Downloads/stats-243/final/MFA01/install.R")
 
+
 # Define server logic required to draw the required plots
 
 shinyServer(function(input, output) {

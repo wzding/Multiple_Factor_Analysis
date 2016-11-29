@@ -95,9 +95,14 @@ ctr.table.mfa <- function(x, table = NULL,comp=NULL,...) {
       return(ctr.table[[table]][comp])
     }
 }
+#' @title RV table
+#' @description private function to evaluate the similarity between two tables
+#' @param table1
+#' @param table2
+#' @export
+RV <- function(table1, table2) UseMethod("RV")
+#' @export
 
-
-# private function to evaluate the similarity between two tables
 RV <- function(table1, table2){
   m1 <- as.matrix(table1)
   m2 <- as.matrix(table2)
@@ -108,7 +113,13 @@ RV <- function(table1, table2){
   res1 / res2
 }
 
-# Coefficients to study the Between-Table Structure
+#' @title RV table
+#' @description Coefficients to study the Between-Table Structure
+#' @param dataset
+#' @param sets list with sets of variables
+#' @export
+RV_table <- function(dataset, sets = list(1:3, 4:5, 6:10)) UseMethod("RV_table")
+#' @export
 RV_table <- function(dataset, sets = list(1:3, 4:5, 6:10)){
   K <- length(sets)
   res <- matrix(1, K, K)
@@ -121,7 +132,17 @@ RV_table <- function(dataset, sets = list(1:3, 4:5, 6:10)){
   res
 }
 
-# Lg Coefficient between two tables
+
+
+
+#' @title Lg coefficient
+#' @description Lg Coefficient between two tables
+#' @param table1
+#' @param table2
+#' @export
+Lg <- function(table1, table2) UseMethod("Lg")
+
+#' @export
 Lg <- function(table1, table2){
   m1 <- as.matrix(table1)
   m2 <- as.matrix(table2)
@@ -135,6 +156,13 @@ Lg <- function(table1, table2){
   res
 }
 
+#' @title Lg table
+#' @description table of Lg coefficients
+#' @param dataset
+#' @param sets
+#' @export
+Lg_table <- function(dataset, sets = list(1:3, 4:5, 6:10)) UseMethod("Lg_table")
+#' @export
 Lg_table <- function(dataset, sets = list(1:3, 4:5, 6:10)){
   K <- length(sets)
   res <- matrix(1, K, K)
