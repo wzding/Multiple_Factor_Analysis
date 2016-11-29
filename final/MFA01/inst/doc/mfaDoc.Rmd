@@ -2,7 +2,99 @@
 title: "Multiple factor analysis documentation"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Put the title of your vignette here}
+  %\VignetteIndexEntry{mfaDoc.Rmd}
   %\VignetteEngine{knitr::rmarkdown}
   \usepackage[utf8]{inputenc}
 ---
+
+## Introduction
+This is the documentation file for the package *MFA01*, MFA is short for multiple factor analysis, which is an extension of principle componenet analysis (PCA) to process multiple data sets and their correlations. It generally computed in two steps:
+
+* Step 1: compute PCA of each observation table
+* Step 2: aggregate all normalized data tables into a grand table, then compute a non-normalized PCA on it to get the factors scores for analysis.
+
+In addition, partial factor scores and variable loadings are also computed in the process. In this package, visualization tools such as generic functions for print, plot and tabularizing results are also provided. In addition, the package provides auxiliary functions to compute _summaries of eigenvalues_, _contributions_, _$R_V$ coefficients_, _coefficients to study the between table structure_ as well as _$L_q$ coefficients_ and _Bootstrap_ method to estimate the stability of the compromise factor scores. A shiny application is included in the package for interactive visualiztion of the MFA results of the default data set in the folder '/data'. 
+
+The package functionalities are discussed with R code illustration in the following sections.
+
+## Main function to perform mfa
+
+To install the package, go to the R file 'install.R', use 'setwd()' to change the working directory to 'your_path/MFA01', and run the file.
+```{r,eval=FALSE}
+source("install.R")
+```
+
+Then the MFA package should be installed. To create an 'mfa' object with default data set, simply run
+```{r,eval=FALSE}
+library(MFA01)
+mfa_obj=MFA()
+```
+
+Or provide data sets by
+```{r,eval=FALSE}
+mfa_obj=MFA(data='your_data_set')
+```
+
+The mfa object computes the eigenvalues of the grand data table, which can be visualized by 
+```{r,eval=FALSE}
+plot_eig(mfa_obj)
+```
+
+![Eigenvalue_hist](dig_bar.png)
+
+A matrix of the common factor score can be accessed by
+
+```{r,eval=FALSE}
+mfa_obj$cfs
+```
+
+Other elements of the mfa object include: 
+
+```{r,eval=FALSE}
+attributes(mfa_obj)$names
+```
+
+[1] "assessors"   "index_lists" "weights"     "eigen"       "cfs"         "fl"         
+[7] "pfl"         "pfs"  
+
+To see a summary of what the object returns
+
+```{r,eval=FALSE}
+mfa_obj
+```
+
+Number of tables/blocks for analysis: 10 
+
+Weight of tables: 
+
+ 0.240983 0.2386034 0.2748748 0.2728329 0.3065003 0.3023908 0.4167984 0.2724079 0.2635522 0.308608 
+ 
+First two eigenvalues:  0.7702551 0.1229254 
+
+First component of common factor scores:  
+
+ -0.9802057 -0.8088651 -0.7610058 -1.114984 1.372757 1.264015 0.8082827 0.9253423 -0.6689538 0.07316059 -0.4761088 0.3665652 
+ 
+Facor loadings for the first table (1st component): 
+
+ -0.2943913 -0.2665541 -0.2599726 0.2411168 0.2863237 -0.232907 
+ 
+## Generic methods
+
+### plotting function
+
+The compromise of the tables can be viewed by calling
+
+```{r,eval=FALSE}
+plot(mfa_obj)
+```
+
+![common_factor_score](cfs_plot.png)
+
+One can also specify the options for the 'plot' function to view partial factor score and variable loadings by
+
+```{r,eval=FALSE}
+plot(mfa_obj,FALSE,pfs=TRUE,num=2)
+```
+
+### Heading 3

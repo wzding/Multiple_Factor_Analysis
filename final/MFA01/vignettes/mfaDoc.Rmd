@@ -81,7 +81,34 @@ Facor loadings for the first table (1st component):
  
 ## Generic methods
 
+### plotting function
+
+The compromise of the tables can be viewed by calling
+
+```{r,eval=FALSE}
+plot(mfa_obj)
+```
+
+![common_factor_score](cfs_plot.png)
+
+One can also specify the options for the 'plot' function to view partial factor score and variable loadings by
+
+```{r,eval=FALSE}
+plot(mfa_obj,FALSE,pfl=TRUE,pfs=TRUE,num=2)
+```
+
+![partial_factor_score_loading](pfs_pfl_plot.png)
+
+### Related methods
+
+The summaries of eigenvalues can be obtained by
+
+```{r}
+ev.summary(mfa_obj)
+```
 
 
 
-### Heading 3
+
+
+
