@@ -15,11 +15,7 @@ shinyServer(function(input, output) {
     # 2.common factor scores(compromise factor score) matrix
     # 3.partial factor score
     # 4.loadings
-    # result <-
-    #Fmat=matrix(c(-0.98,0.163,-0.809,0.033,-0.761,-0.454,-1.115,-0.166,1.373,-0.128),nrow=5,ncol=2,byrow=TRUE)
-    #sv=c(0.878,0.351,0.301,0.276,0.244,0.198,0.176,0.158,0.137,0.116,0.106)
-    #eigs=sv^2
-    #mfa1=new(Class ="mfa",F=Fmat,sv=sv,eig=eigs)
+    
     MFA()
   })
 
@@ -38,7 +34,7 @@ shinyServer(function(input, output) {
   output$result_plot<-renderPlot({
     mfa1=MFA()
     switch(input$Plot,
-           "Eigenvalue Bar Chart"=plot(mfa1),
+           "Eigenvalue Bar Chart"=plot(mfa1,FALSE,eig=TRUE),
            "Common Factor Score"=plot(mfa1),
            "Partial Factor Score"=plot(mfa1,FALSE,pfs=TRUE,num=1),
            "Loadings"=plot(mfa1,FALSE,pfl=TRUE,num=1))

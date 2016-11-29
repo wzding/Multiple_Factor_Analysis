@@ -16,7 +16,7 @@
 #'  }
 #'
 
-plot.mfa <- function(x, cfs = TRUE, pfs = FALSE, pfl = FALSE, num=1,...) {
+plot.mfa <- function(x, cfs = TRUE, pfs = FALSE, pfl = FALSE, num=1,eig=FALSE,...) {
   plot(x$cfs[,1:2],xaxt="n", yaxt="n",
        xlab="1st component",
        ylab="2nd component",
@@ -54,9 +54,17 @@ plot.mfa <- function(x, cfs = TRUE, pfs = FALSE, pfl = FALSE, num=1,...) {
     # text(pl[[num]][,1],pl[[num]][,2],cex=0.8,pos=3)
     title(main=paste("Variable loadings (No.", num," data table)" ))
   }
+  else if(eig){
+    plot_eig(x)
+  }
 }
 
-
+plot_eig <- function(x,...){
+  colors=c("black","red","blue","yellow","pink","orange","green","purple")
+  barplot(x$eigen,main="eigenvalues histogram",col = colors,
+          names.arg =paste(x$eigen) )
+  
+}
 # auxiliary functions for plot.mfa() method
 
 # get scale factor for pfs and loadings so that their variance is equal to the singular value
