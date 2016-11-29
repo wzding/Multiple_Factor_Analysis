@@ -28,7 +28,7 @@ shinyServer(function(input, output) {
   })
   
   output$cont_table<-renderText({
-    paste("Table: Controbution Table")
+    paste("Table: Contribution Table")
   })
 
   output$result_plot<-renderPlot({
