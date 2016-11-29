@@ -12,7 +12,8 @@ shinyUI(fluidPage(
       selectInput("Plot","Choose a figure to plot:",
                   choices = c("Eigenvalue Bar Chart","Common Factor Score",
                               "Partial Factor Score","Loadings"),
-                  selected = "Common Factor Score")
+                  selected = "Common Factor Score"),
+      sliderInput("tester","(Note: only useful when you select to plot partial factor score) \n Tester No. ",min=1,max=12,value=1)
 
     ),
 
