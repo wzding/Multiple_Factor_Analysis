@@ -2,13 +2,9 @@
 
 # or add the library when the package is ready
 library(shiny)
-<<<<<<< HEAD
 source("/Users/Shiying/Dropbox/BERKELEY_study/2016_Fall/02_STAT243/243_proj/Stats-243/final/MFA01/install.R")
 #source("E:/Stats-243/final/install.R")
-=======
-# source("/Users/Shiying/Dropbox/BERKELEY_study/2016_Fall/02_STAT243/243_proj/Stats-243/final/install.R")
-source("C:/Users/Emma/Downloads/stats-243/final/MFA01/install.R")
->>>>>>> 007f232fe73b84cc6df706e447af340f90a8652e
+
 
 # Define server logic required to draw the required plots
 

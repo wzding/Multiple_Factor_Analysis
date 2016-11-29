@@ -126,5 +126,42 @@ Note, the output of the results are suppressed for clarity of the document.
 
 ### Coefficients to study the Between-Table structure
 
+The $R_V$ coefficient is used to study the similarity between two tables.
+It can be obtained by 
+```{r,eval=FALSE}
+table1=mfa_obj$assessors[[1]]
+table2=mfa_obj$assessors[[2]]
+RV(table1,table2)
+```
 
+[1] 0.868
+
+The $R_V$ table, $L_g$ coefficient and table can also be computed
+```{r,eval=FALSE}
+data=cbind(mfa_obj$assessors[[1]],mfa_obj$assessors[[2]],mfa_obj$assessors[[3]])
+RV_table(data)
+Lg(table1,table2)
+Lg_table(data)
+```
+
+![R_V_table_Lg_etc](rv.png)
+
+### Bootstrap
+
+The package also provides 'bootStrap' function such that one can use to estimate the stability of the compromise factor score.
+
+```{r,eval=FALSE}
+bootStrap(mfa_obj)
+```
+
+## shiny app
+
+A shiny application is provided for interative visualization of the plots and tables.
+One can open the file 'server.R' or 'ui.R', check the path and then run the app to see the results.
+
+The interface of the app looks like
+
+![shiny_app_interface](shiny.png)
+
+One can use the drop down list to choose which plot to show and slide the number bar to choose which table to plot the partial factor scores and laoding.
 
