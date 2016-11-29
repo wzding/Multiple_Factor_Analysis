@@ -15,11 +15,6 @@ ev.summary.mfa <- function(x,digit=3, ...) {
   Inertia <- Eigenvalue/sum(Eigenvalue) * 100
   CumulativeInertia <-cumsum(Inertia)
   x=data.frame(SingularValue,Eigenvalue,CumulativeEigenvalue,round(Inertia),round(CumulativeInertia))
-  #x=as.matrix(rbind(SingularValue,Eigenvalue,CumulativeEigenvalue,Inertia,CumulativeInertia))
-  #x=t(x)
-  #rownames(x) = c("SingularValue","Eigenvalue","cumulative","Intertia","cumulative")
-  #colnames(x) = paste(1:length(eigen))
-  #as.table(x)
   print(x)
 }
 
@@ -149,5 +144,39 @@ Lg_table <- function(dataset, sets = list(1:3, 4:5, 6:10)){
       res[j,i] <- res[i,j]
     }
   }
+  res
+}
+#' @title bootstrap
+#' @description Bootstrap
+#' @param x an object of class \code{"mfa"}
+#' @param K bootstrap sample size
+#' @param L number of bootstrap samples
+#' @export
+bootStrap <- function(x, K = 10, L = 1000) UseMethod("bootStrap")
+#' @examples
+#'  \dontrun{
+#'  # create a \code{"mfa"} and plot its common factor scores
+#'  a <- MFA()
+#'
+#'  bootstrap(a)
+#'  }
+#' @export
+bootStrap <- function(x, K = 10, L = 1000){
+  n <- nrow(x$cfs)      # num of observations
+  R <- ncol(x$cfs)       # rank
+  KK <- max(x$index_lists)      # num of components
+  pfs <- x$pfs         # partial factor scores
+  Fstar <- array(0, dim = c(n, R, L))
+  for(i in 1:L){
+    B <- sample(KK, K, replace = TRUE)
+    for(j in 1:K){
+      Fstar[, , i] <- Fstar[, , i] + pfs[[B[j]]] / K
+    }
+  }
+  Fstar
+  meanFstar <- apply(Fstar, c(1,2), mean)
+  varFstar <- apply(Fstar, c(1,2), var) * (L-1) / L
+  res <- list(meanFstar, sqrt(varFstar))
+  names(res) <- c('mean', 'sd')
   res
 }
