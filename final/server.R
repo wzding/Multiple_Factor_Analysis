@@ -19,11 +19,6 @@ shinyServer(function(input, output) {
     MFA()
   })
   
-  plotpfs<- reactive({
-    x=plotChoice()
-    plot(x,FALSE,pfs=TRUE,num=input$tester)
-  })
-
   output$text<-renderText({
     paste("You have selected to plot ",input$Plot,":")
   })
@@ -41,8 +36,8 @@ shinyServer(function(input, output) {
     switch(input$Plot,
            "Eigenvalue Bar Chart"=plot(mfa1,FALSE,eig=TRUE),
            "Common Factor Score"=plot(mfa1),
-           "Partial Factor Score"=plotpfs(),
-           "Loadings"=plot(mfa1,FALSE,pfl=TRUE,num=1))
+           "Partial Factor Score"=plot(mfa1,FALSE,pfs=TRUE,num=input$tester),
+           "Loadings"=plot(mfa1,FALSE,pfl=TRUE,num=input$tester))
   })
 
   output$eigTbl<-renderDataTable({
