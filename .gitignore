@@ -1,5 +1,6 @@
 # the ignore file
-*.Rproj.user
-*.Rhistory
-.Rproj.user
+final/*.Rproj.user
+final/*.Rhistory
+final/MFA01/*.Rproj.user
+final/MFA01/*.Rhistory
 final/MFA01_0.1.0.tar.gz
