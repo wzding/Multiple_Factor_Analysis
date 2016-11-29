@@ -1,3 +1,4 @@
 # the ignore file
 *.Rproj.user
 *.Rhistory
+.Rproj.user
