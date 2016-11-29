@@ -4,7 +4,7 @@
 library(shiny)
 
 # source("/Users/Shiying/Dropbox/BERKELEY_study/2016_Fall/02_STAT243/243_proj/Stats-243/final/install.R")
-source("C:/Users/Emma/Downloads/stats-243/final/MFA01/install.R")
+source("C:/Users/Emma/Downloads/stats-243/final/MFA01/install_Emma.R")
 
 
 # Define server logic required to draw the required plots
@@ -18,7 +18,7 @@ shinyServer(function(input, output) {
     # 2.common factor scores(compromise factor score) matrix
     # 3.partial factor score
     # 4.loadings
-
+    
     MFA()
   })
 
@@ -41,7 +41,7 @@ shinyServer(function(input, output) {
            "Common Factor Score"=plot(mfa1),
            "Partial Factor Score"=plot(mfa1,FALSE,pfs=TRUE,num=input$tester),
            "Factor Loading"=plot(mfa1,FALSE,pfl=TRUE,num=input$tester),
-           "Partial Factor Score and Factor Loading" = plot(mfa1,FALSE,pfl=TRUE,num=input$tester))
+           "Partial Factor Score and Factor Loading" = plot(mfa1,FALSE,pfs=TRUE,pfl=TRUE,num=input$tester))
   })
 
   output$eigTbl<-renderDataTable({
