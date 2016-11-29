@@ -17,3 +17,5 @@ Collate:
     hello.R
 RoxygenNote: 5.0.1
 Suggests: testthat
+Suggests: knitr, rmarkdown
+VignetteBuilder: knitr
