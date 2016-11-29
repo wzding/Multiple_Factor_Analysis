@@ -2,7 +2,11 @@
 
 setwd('E:/Stats-243/final/')
 # setwd('/Users/Shiying/Dropbox/BERKELEY_study/2016_Fall/02_STAT243/243_proj/Stats-243/final/')
+devtools::use_vignette("my-vignette")
+
+
 library(devtools)
+library(knitr)
 pkg <- 'MFA01'
 
 devtools::document(pkg = pkg)
