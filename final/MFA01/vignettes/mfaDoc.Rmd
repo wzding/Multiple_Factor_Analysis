@@ -99,16 +99,32 @@ plot(mfa_obj,FALSE,pfl=TRUE,pfs=TRUE,num=2)
 
 ![partial_factor_score_loading](pfs_pfl_plot.png)
 
-### Related methods
+### Related methods: contributions
 
 The summaries of eigenvalues can be obtained by
 
-```{r}
+```{r,eval=FALSE}
 ev.summary(mfa_obj)
 ```
 
+![eigenvalue_summary_table](eig_table.png)
 
+Other derived output from MFA is a series of decriptive statistics called _contributions_. Three types of contributions can be computed 
 
+1. contribution of an observation to a dimension
+1. contribution of a variable to a dimension
+1. contribution of a table to a dimension
+
+These can be computed by calling
+```{r,eval=FALSE}
+ctr.obs(mfa_obj)
+ctr.var(mfa_obj)
+ctr.table(mfa_obj)
+```
+
+Note, the output of the results are suppressed for clarity of the document.
+
+### Coefficients to study the Between-Table structure
 
 
 
