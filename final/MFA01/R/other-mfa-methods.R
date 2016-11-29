@@ -121,9 +121,6 @@ RV_table <- function(dataset, sets = list(1:3, 4:5, 6:10)){
   res
 }
 
-
-
-
 # Lg Coefficient between two tables
 Lg <- function(table1, table2){
   m1 <- as.matrix(table1)
