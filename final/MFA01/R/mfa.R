@@ -35,7 +35,7 @@ MFA <- function(data = get(load("data/wine.rda")),
   #GSVD - return list(eigen,cfs,fl)
   gsvd <- GSVD(d=data,s=sets,w=weight,n=ncomps)
   # return list(pfl, pfs)
-  pf <- PFS(a= assessor ,idx = index_list,w= weight,fl = gsvd[[3]])
+  # pf <- PFS(a= assessor ,idx = index_list,w= weight,fl = gsvd[[3]])
 
   object <- list(
     assessors = assessor,
@@ -43,9 +43,9 @@ MFA <- function(data = get(load("data/wine.rda")),
     weights = weight,
     eigen= gsvd[[1]], # vector
     cfs = gsvd[[2]], # matrix
-    fl = gsvd[[3]], # matrix
-    pfl = pf[[1]],
-    pfs = pf[[2]])  # list
+    fl = gsvd[[3]]) # matrix
+    # pfl = pf[[1]],
+    # pfs = pf[[2]])  # list
   class(object) <- "mfa"
   object
 }
@@ -53,14 +53,17 @@ MFA <- function(data = get(load("data/wine.rda")),
 
 # private function to scale data
 scale_data <- function(d,s,ctr=TRUE,sc=TRUE) {
-  t <- try(scale(d[unlist(s)]),silent = T)
+  data <- data.matrix(d)
+  t <- try(scale(data[,unlist(s)]),silent = T)
   if("try-error" %in% class(t)) {
     stop("\neach table/block must be numeric")
   }
   # sum of the square values of all its elements is equal to 1
-  d[unlist(s)] <- scale(d[unlist(s)],center = ctr, scale = sc)/((nrow(d)-1)^0.5)
-  return(d)
+  data[,unlist(s)] <- scale(data[,unlist(s)],center = ctr, scale = sc)/((nrow(data)-1)^0.5)
+  return(data)
 }
+
+
 
 # private function to check number of components
 check_n <- function(n){
@@ -76,11 +79,12 @@ check_n <- function(n){
 
 # private function to subset data (by column)
 subset_data <- function(d, s) {
+  d <- data.matrix(d)
   a <- list()
   j <- list()
   for(i in 1:length(s)){
     a[[i]] <- d[,s[[i]]]
-    j[[i]] <- length(a[[i]])
+    j[[i]] <- ncol(a[[i]])
   }
 
   newList <- list(a,j)
@@ -107,7 +111,7 @@ SVD <- function(a){
 # private function to get GSVD, input should be whole data
 GSVD <- function(d,s,w,n=2){
   # get constrains
-  d <- as.matrix(d[unlist(s)])
+  d <- as.matrix(d[,unlist(s)])
   len <- nrow(d)
   m <-  diag(1/len,len,len)
   m_0.5 <- diag((1/len)^(-0.5),len,len)
@@ -157,7 +161,7 @@ print.mfa <- function(x, ...) {
   cat("First two eigenvalues: ", x$eigen[1:2], "\n")
   cat("First component of common factor scores: ","\n",x$cfs[,1], "\n")
   cat("Facor loadings for the first table (1st component): ", "\n",
-      x$fl[1:length(x$assessors[[1]]),1], "\n")
+      x$fl[1:ncol(x$assessors[[1]]),1], "\n")
   # cat("Partial factor score for the first table (1st component): ", x$pfs[[1]], "\n")
   invisible(x)
 }
@@ -171,7 +175,9 @@ print.mfa <- function(x, ...) {
 
 
 ############### Below is function testing
+# x <- matrix(1:100, nrow=10, ncol=10)
+# scale_data(x,list(1:3,5:6,7:10))
+# subset_data(x,list(1:3,5:6,7:10))
 # source('R/other-mfa-methods.R')
 # a <- MFA()
-# ctr.obs(a,obs=1)
-# ctr.obs.mfa(a,obs = 1)
+# a
