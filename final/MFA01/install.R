@@ -3,7 +3,6 @@
 #setwd('E:/Stats-243/final/')
 setwd('/Users/Shiying/Dropbox/BERKELEY_study/2016_Fall/02_STAT243/243_proj/Stats-243/final')
 
-
 library(devtools)
 
 pkg <- 'MFA01'

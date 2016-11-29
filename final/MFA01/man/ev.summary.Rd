@@ -4,7 +4,7 @@
 \alias{ev.summary}
 \title{summary method}
 \usage{
-ev.summary(x)
+ev.summary(x, digit = 3, ...)
 }
 \arguments{
 \item{x}{an R object}
