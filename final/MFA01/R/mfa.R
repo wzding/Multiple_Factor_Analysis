@@ -35,7 +35,7 @@ MFA <- function(data = get(load("data/wine.rda")),
   #GSVD - return list(eigen,cfs,fl)
   gsvd <- GSVD(d=data,s=sets,w=weight,n=ncomps)
   # return list(pfl, pfs)
-  # pf <- PFS(a= assessor ,idx = index_list,w= weight,fl = gsvd[[3]])
+  pf <- PFS(a= assessor ,idx = index_list,w= weight,fl = gsvd[[3]])
 
   object <- list(
     assessors = assessor,
@@ -43,9 +43,9 @@ MFA <- function(data = get(load("data/wine.rda")),
     weights = weight,
     eigen= gsvd[[1]], # vector
     cfs = gsvd[[2]], # matrix
-    fl = gsvd[[3]]) # matrix
-    # pfl = pf[[1]],
-    # pfs = pf[[2]])  # list
+    fl = gsvd[[3]], # matrix
+    pfl = pf[[1]],
+    pfs = pf[[2]])  # list
   class(object) <- "mfa"
   object
 }
@@ -175,9 +175,6 @@ print.mfa <- function(x, ...) {
 
 
 ############### Below is function testing
-# x <- matrix(1:100, nrow=10, ncol=10)
-# scale_data(x,list(1:3,5:6,7:10))
-# subset_data(x,list(1:3,5:6,7:10))
-# source('R/other-mfa-methods.R')
+# source('MFA01/R/plot-mfa.R')
 # a <- MFA()
-# a
+# plot(a,cfs = FALSE, pfs = TRUE)
