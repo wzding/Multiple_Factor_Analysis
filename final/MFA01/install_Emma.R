@@ -14,6 +14,6 @@ devtools::install(pkg = pkg)
 
 library(MFA01)
 
-# a <- MFA()
-# a
+a <- MFA()
+a
 

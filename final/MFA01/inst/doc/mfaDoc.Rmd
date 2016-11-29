@@ -161,4 +161,7 @@ One can open the file 'server.R' or 'ui.R', check the path and then run the app 
 
 The interface of the app looks like
 
+![shiny_app_interface](shiny.png)
+
+One can use the drop down list to choose which plot to show and slide the number bar to choose which table to plot the partial factor scores and laoding.
 
