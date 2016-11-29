@@ -40,7 +40,7 @@ shinyServer(function(input, output) {
            "Loadings"=plot(mfa1,FALSE,pfl=TRUE,num=1))
   })
 
-  output$eigTbl<-renderTable({
+  output$eigTbl<-renderDataTable({
     mfa1=plotChoice()
     ev.summary(mfa1)
   })

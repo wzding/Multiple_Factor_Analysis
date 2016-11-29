@@ -13,6 +13,3 @@ devtools::build(pkg = pkg)
 devtools::install(pkg = pkg)
 
 library(MFA01)
-
-a=MFA()
-ev.summary(a)

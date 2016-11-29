@@ -8,13 +8,13 @@ ev.summary <- function(x) UseMethod("ev.summary")
 #' @export
 ev.summary.mfa <- function(x,digit=3, ...) {
   options(digits=digit)
-  Eigenvalue <- x$eigen
+  Eigenvalue <- round(x$eigen,2)
   Component <- 1:length(Eigenvalue)
-  SingularValue <- sqrt(Eigenvalue)
+  SingularValue <- round(sqrt(Eigenvalue),2)
   CumulativeEigenvalue <- cumsum(Eigenvalue)
   Inertia <- Eigenvalue/sum(Eigenvalue) * 100
   CumulativeInertia <-cumsum(Inertia)
-  x=data.frame(SingularValue,Eigenvalue,CumulativeEigenvalue,Inertia,CumulativeInertia)
+  x=data.frame(SingularValue,Eigenvalue,CumulativeEigenvalue,round(Inertia),round(CumulativeInertia))
   #x=as.matrix(rbind(SingularValue,Eigenvalue,CumulativeEigenvalue,Inertia,CumulativeInertia))
   #x=t(x)
   #rownames(x) = c("SingularValue","Eigenvalue","cumulative","Intertia","cumulative")

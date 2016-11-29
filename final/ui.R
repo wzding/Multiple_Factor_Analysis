@@ -21,8 +21,8 @@ shinyUI(fluidPage(
       textOutput("text"),
       plotOutput("result_plot"),
       textOutput("text_table"),
-      tableOutput("eigTbl")
-      #dataTableOutput("eigTbl")
+      #tableOutput("eigTbl")
+      dataTableOutput("eigTbl")
     )
   )
 ))
