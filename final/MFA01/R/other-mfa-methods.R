@@ -108,7 +108,7 @@ RV <- function(table1, table2){
   res1 / res2
 }
 
-#Coefficients to study the Between-Table Structure
+# Coefficients to study the Between-Table Structure
 RV_table <- function(dataset, sets = list(1:3, 4:5, 6:10)){
   K <- length(sets)
   res <- matrix(1, K, K)
@@ -120,6 +120,9 @@ RV_table <- function(dataset, sets = list(1:3, 4:5, 6:10)){
   }
   res
 }
+
+
+
 
 # Lg Coefficient between two tables
 Lg <- function(table1, table2){
@@ -146,6 +149,7 @@ Lg_table <- function(dataset, sets = list(1:3, 4:5, 6:10)){
   }
   res
 }
+
 #' @title bootstrap
 #' @description Bootstrap
 #' @param x an object of class \code{"mfa"}
@@ -180,3 +184,11 @@ bootStrap <- function(x, K = 10, L = 1000){
   names(res) <- c('mean', 'sd')
   res
 }
+
+
+
+############### Below is function testing
+# x <- matrix(1:100, nrow=10, ncol=10)
+# RV_table(x,list(1:3,5:6,7:10))
+# Lg_table(x)
+
