@@ -4,7 +4,7 @@
 \alias{ctr.var}
 \title{contribution method}
 \usage{
-ctr.var(x)
+ctr.var(x, var = NULL, comp = NULL, ...)
 }
 \arguments{
 \item{x}{an R object}
