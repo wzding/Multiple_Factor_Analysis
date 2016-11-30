@@ -23,7 +23,11 @@ shinyServer(function(input, output) {
   })
 
   output$text<-renderText({
-    paste("You have selected to plot ",input$Plot,":")
+    paste("You have selected to plot ",input$Plot)  
+  })
+
+  output$text_sub <-renderText({
+    paste("(number on top corresponds to ith observation)")
   })
 
   output$text_table<-renderText({
