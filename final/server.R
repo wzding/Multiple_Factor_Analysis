@@ -23,11 +23,7 @@ shinyServer(function(input, output) {
   })
   
   output$text<-renderText({
-    paste("You have selected to plot ",input$Plot)  
-  })
-
-  output$text_sub <-renderText({
-    paste("(number on top corresponds to ith observation)")
+    paste(input$Plot," (number on top corresponds to ith observation)" )  
   })
 
   output$text_table<-renderText({
@@ -57,7 +53,7 @@ shinyServer(function(input, output) {
            "Partial Factor Score"= plotChoice()$pfs[[input$tester]][,1:input$num],
            "Factor Loading"= plotChoice()$pfl[[input$tester]][,1:input$num],
            "Partial Factor Score and Factor Loading" = 
-             list(plotChoice()$pfs[[input$tester]][,1:input$num],
+             list(plotChoice()$pfs[[input$tester]][,1:input$num], 
                   plotChoice()$pfl[[input$tester]][,1:input$num]))
   })  
   
