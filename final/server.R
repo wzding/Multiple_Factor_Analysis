@@ -38,10 +38,15 @@ shinyServer(function(input, output) {
     paste("Table: Contribution Table")
   })
 
+  output$eign_plot <- renderPlot({
+    # plot of eigenvalues
+    mfa1=MFA()
+    plot(mfa1,FALSE,eig=TRUE)
+  })
+  
   output$result_plot<-renderPlot({
     mfa1=MFA()
     switch(input$Plot,
-           "Eigenvalue Bar Chart"=plot(mfa1,FALSE,eig=TRUE),
            "Common Factor Score"=plot(mfa1),
            "Partial Factor Score"=plot(mfa1,FALSE,pfs=TRUE,num=input$tester),
            "Factor Loading"=plot(mfa1,FALSE,pfl=TRUE,num=input$tester),
