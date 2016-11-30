@@ -186,7 +186,7 @@ bootStrap <- function(x, K = 10, L = 1000,...) UseMethod("bootStrap")
 #'  bootstrap(a)
 #'  }
 #' @export
-bootStrap.mfa <- function(x, K = 10, L = 1000,...){
+bootStrap <- function(x, K = 10, L = 1000,...){
   n <- nrow(x$cfs)      # num of observations
   R <- ncol(x$cfs)       # rank
   KK <- max(x$index_lists)      # maximum num of components

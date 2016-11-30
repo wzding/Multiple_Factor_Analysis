@@ -1,5 +1,5 @@
 
-setwd('E:/Stats-243/final/')
+setwd('C:/Users/Emma/Downloads/stats-243/final/')
 
 library(devtools)
 

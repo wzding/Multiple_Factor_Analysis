@@ -6,6 +6,11 @@
 \usage{
 RV(table1, table2)
 }
+\arguments{
+\item{table1}{the first table to analyze}
+
+\item{table2}{the second table to analyze}
+}
 \description{
 private function to evaluate the similarity between two tables
 }
