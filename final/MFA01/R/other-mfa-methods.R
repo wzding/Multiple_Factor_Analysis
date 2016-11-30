@@ -12,9 +12,9 @@ ev.summary.mfa <- function(x,digit=3, ...) {
   Component <- 1:length(Eigenvalue)
   SingularValue <- round(sqrt(Eigenvalue),2)
   CumulativeEigenvalue <- cumsum(Eigenvalue)
-  Inertia <- Eigenvalue/sum(Eigenvalue) * 100
-  CumulativeInertia <-cumsum(Inertia)
-  x <- data.frame(SingularValue,Eigenvalue,CumulativeEigenvalue,round(Inertia),round(CumulativeInertia))
+  Inertia <- round(Eigenvalue/sum(Eigenvalue) * 100)
+  CumulativeInertia <-round(cumsum(Inertia))
+  x <- data.frame(SingularValue,Eigenvalue,CumulativeEigenvalue,Inertia,CumulativeInertia)
   print(x)
 }
 
