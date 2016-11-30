@@ -24,6 +24,7 @@ plot.mfa <- function(x, cfs = TRUE, pfs = FALSE, pfl = FALSE, num=1,eig=FALSE,..
   axis(side=1,pos = 0)
   axis(side=2,pos = 0)
   abline(v=0,h=0,col = "gray70", lwd = 1.5)
+  text(x$cfs[,1],x$cfs[,2],labels = 1:nrow(x$cfs),cex=0.8,pos=3)
   title(main="Common Facor scores")
 
   if(pfs && pfl){
@@ -42,7 +43,7 @@ plot.mfa <- function(x, cfs = TRUE, pfs = FALSE, pfl = FALSE, num=1,eig=FALSE,..
     axis(side=1,pos = 0)
     axis(side=2,pos = 0)
     abline(v=0,h=0)
-    # text(pfs[[num]][,1],pfs[[num]][,2],cex=0.8,pos=3)
+    text(x$pfs[[num]][,1],x$pfs[[num]][,2],labels = 1:nrow(x$pfs[[num]]),cex=0.8,pos=3)
     title(main=paste("Partial facor scores (No.", num," data table)" ))
   }
   else if(pfl){
@@ -52,7 +53,7 @@ plot.mfa <- function(x, cfs = TRUE, pfs = FALSE, pfl = FALSE, num=1,eig=FALSE,..
     axis(side=1,pos = 0)
     axis(side=2,pos = 0)
     abline(v=0,h=0)
-    # text(pl[[num]][,1],pl[[num]][,2],cex=0.8,pos=3)
+    text(x$pfl[[num]][,1],x$pfl[[num]][,2],labels = 1:nrow(x$pfl[[num]]),cex=0.8,pos=3)
     title(main=paste("Variable loadings (No.", num," data table)" ))
   }
   else if(eig){
