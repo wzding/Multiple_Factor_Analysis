@@ -68,7 +68,6 @@ ctr.var.mfa <- function(x, var=NULL,comp=NULL,  ...) {
   }
 }
 
-
 #' @title contribution method
 #' @description Summarizes contribution of a table/block to a dimension
 #' @param x an R object
@@ -97,8 +96,8 @@ ctr.table.mfa <- function(x, table = NULL,comp=NULL,...) {
 }
 #' @title RV table
 #' @description private function to evaluate the similarity between two tables
-#' @param table1
-#' @param table2
+#' @param table1 the first table to analyze
+#' @param table2 the second table to analyze
 #' @export
 RV <- function(table1, table2) UseMethod("RV")
 #' @export
@@ -115,7 +114,7 @@ RV <- function(table1, table2){
 
 #' @title RV table
 #' @description Coefficients to study the Between-Table Structure
-#' @param dataset
+#' @param dataset the dataset to study 
 #' @param sets list with sets of variables
 #' @export
 RV_table <- function(dataset, sets = list(1:3, 4:5, 6:10)) UseMethod("RV_table")
@@ -132,13 +131,10 @@ RV_table <- function(dataset, sets = list(1:3, 4:5, 6:10)){
   res
 }
 
-
-
-
 #' @title Lg coefficient
 #' @description Lg Coefficient between two tables
-#' @param table1
-#' @param table2
+#' @param table1 the first table to analyze
+#' @param table2 the second table to analyze
 #' @export
 Lg <- function(table1, table2) UseMethod("Lg")
 
@@ -158,8 +154,8 @@ Lg <- function(table1, table2){
 
 #' @title Lg table
 #' @description table of Lg coefficients
-#' @param dataset
-#' @param sets
+#' @param dataset the dataset to study 
+#' @param sets list with sets of variables
 #' @export
 Lg_table <- function(dataset, sets = list(1:3, 4:5, 6:10)) UseMethod("Lg_table")
 #' @export
@@ -176,12 +172,12 @@ Lg_table <- function(dataset, sets = list(1:3, 4:5, 6:10)){
 }
 
 #' @title bootstrap
-#' @description Bootstrap
+#' @description Bootstrap to estimate the stability of the compromise factor scores
 #' @param x an object of class \code{"mfa"}
 #' @param K bootstrap sample size
 #' @param L number of bootstrap samples
 #' @export
-bootStrap <- function(x, K = 10, L = 1000) UseMethod("bootStrap")
+bootStrap <- function(x, K = 10, L = 1000,...) UseMethod("bootStrap")
 #' @examples
 #'  \dontrun{
 #'  # create a \code{"mfa"} and plot its common factor scores
@@ -190,10 +186,10 @@ bootStrap <- function(x, K = 10, L = 1000) UseMethod("bootStrap")
 #'  bootstrap(a)
 #'  }
 #' @export
-bootStrap <- function(x, K = 10, L = 1000){
+bootStrap.mfa <- function(x, K = 10, L = 1000,...){
   n <- nrow(x$cfs)      # num of observations
   R <- ncol(x$cfs)       # rank
-  KK <- max(x$index_lists)      # num of components
+  KK <- max(x$index_lists)      # maximum num of components
   pfs <- x$pfs         # partial factor scores
   Fstar <- array(0, dim = c(n, R, L))
   for(i in 1:L){
@@ -202,7 +198,6 @@ bootStrap <- function(x, K = 10, L = 1000){
       Fstar[, , i] <- Fstar[, , i] + pfs[[B[j]]] / K
     }
   }
-  Fstar
   meanFstar <- apply(Fstar, c(1,2), mean)
   varFstar <- apply(Fstar, c(1,2), var) * (L-1) / L
   res <- list(meanFstar, sqrt(varFstar))
@@ -212,7 +207,7 @@ bootStrap <- function(x, K = 10, L = 1000){
 
 
 
-############### Below is function testing
+############### Below is testing code
 # x <- matrix(1:100, nrow=10, ncol=10)
 # RV_table(x,list(1:3,5:6,7:10))
 # Lg_table(x)
