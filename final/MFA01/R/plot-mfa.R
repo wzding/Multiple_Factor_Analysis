@@ -62,9 +62,9 @@ plot.mfa <- function(x, cfs = TRUE, pfs = FALSE, pfl = FALSE, num=1,eig=FALSE,..
 }
 
 plot_eig <- function(x,...){
-  colors=c("black","red","blue","yellow","pink","orange","green","purple")
+  colors=c("red","blue","yellow","pink","orange","green","purple","black")
   eigs=round(x$eigen,2)
-  barplot(eigs,main="eigenvalues histogram",col = colors,
+  barplot(eigs,main="Histogram of Eigenvalues ",col = colors, horiz=TRUE,
           names.arg =paste(eigs) )
   
 }
