@@ -177,5 +177,6 @@ print.mfa <- function(x, ...) {
 ############### Below is function testing
 # source('MFA01/R/plot-mfa.R')
 # a <- MFA()
+# a$pfs
 # ev.summary(a)
 # plot(a,cfs = FALSE, pfs = TRUE)

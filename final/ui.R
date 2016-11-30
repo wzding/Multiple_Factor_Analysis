@@ -18,6 +18,9 @@ shinyUI(fluidPage(
                   selected = "Common Factor Score"),
       sliderInput("tester",paste("Which table to analyze for partial factor score or factor loading"),
                   min=1,max=10,value=1),
+      sliderInput("num",paste("Choose the number of component to display:"),
+                  min=1,max=12,value=2),
+      tableOutput('tbl'),
       plotOutput("eign_plot")
     ),
 

@@ -21,7 +21,7 @@ shinyServer(function(input, output) {
     
     MFA()
   })
-
+  
   output$text<-renderText({
     paste("You have selected to plot ",input$Plot)  
   })
@@ -40,22 +40,29 @@ shinyServer(function(input, output) {
 
   output$eign_plot <- renderPlot({
     # plot of eigenvalues
-    mfa1=MFA()
-    plot(mfa1,FALSE,eig=TRUE)
+    plot(plotChoice(),FALSE,eig=TRUE)
   })
   
   output$result_plot<-renderPlot({
-    mfa1=MFA()
     switch(input$Plot,
-           "Common Factor Score"=plot(mfa1),
-           "Partial Factor Score"=plot(mfa1,FALSE,pfs=TRUE,num=input$tester),
-           "Factor Loading"=plot(mfa1,FALSE,pfl=TRUE,num=input$tester),
-           "Partial Factor Score and Factor Loading" = plot(mfa1,FALSE,pfs=TRUE,pfl=TRUE,num=input$tester))
+           "Common Factor Score"=plot(plotChoice()),
+           "Partial Factor Score"=plot(plotChoice(),FALSE,pfs=TRUE,num=input$tester),
+           "Factor Loading"=plot(plotChoice(),FALSE,pfl=TRUE,num=input$tester),
+           "Partial Factor Score and Factor Loading" = plot(plotChoice(),FALSE,pfs=TRUE,pfl=TRUE,num=input$tester))
   })
 
+  output$tbl <- renderTable({
+    switch(input$Plot,
+           "Common Factor Score"= plotChoice()$cfs[,1:input$num],
+           "Partial Factor Score"= plotChoice()$pfs[[input$tester]][,1:input$num],
+           "Factor Loading"= plotChoice()$pfl[[input$tester]][,1:input$num],
+           "Partial Factor Score and Factor Loading" = 
+             list(plotChoice()$pfs[[input$tester]][,1:input$num],
+                  plotChoice()$pfl[[input$tester]][,1:input$num]))
+  })  
+  
   output$eigTbl<-renderDataTable({
-    mfa1=plotChoice()
-    ev.summary(mfa1)
+    ev.summary(plotChoice())
   })
 
 })
