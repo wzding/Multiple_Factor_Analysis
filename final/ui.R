@@ -8,17 +8,17 @@ shinyUI(fluidPage(
   # Application title
   titlePanel("Multiple Factor Analysis Application"),
 
-  # Sidebar with a slider input for number of tosses
+  # Sidebar with a slider input for number of table to be analyzed
   sidebarLayout(
     sidebarPanel(
       selectInput("Plot","Choose a figure to plot:",
-                  choices = c("Eigenvalue Bar Chart","Common Factor Score",
+                  choices = c("Common Factor Score",
                               "Partial Factor Score","Factor Loading",
                               "Partial Factor Score and Factor Loading"),
                   selected = "Common Factor Score"),
       sliderInput("tester",paste("Which table to analyze for partial factor score or factor loading"),
-                  min=1,max=10,value=1)
-
+                  min=1,max=10,value=1),
+      plotOutput("eign_plot")
     ),
 
     # Show a plot of the generated distribution
