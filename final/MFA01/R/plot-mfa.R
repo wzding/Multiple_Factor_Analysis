@@ -18,8 +18,7 @@
 
 plot.mfa <- function(x, cfs = TRUE, pfs = FALSE, pfl = FALSE, num=1,eig=FALSE,...) {
   plot(x$cfs[,1:2],xaxt="n", yaxt="n",
-       xlab="1st component",
-       ylab="2nd component",
+       xlab="1st component",ylab="2nd component",
        bty="n",cex=1.5,pch = 19,col = "red")
   axis(side=1,pos = 0)
   axis(side=2,pos = 0)
@@ -30,14 +29,14 @@ plot.mfa <- function(x, cfs = TRUE, pfs = FALSE, pfl = FALSE, num=1,eig=FALSE,..
   if(pfs && pfl){
     pfs_scale <- rescale(x$pfs,sqrt(x$eigen))
     loading_scale <- rescale(x$pfl,sqrt(x$eigen))
-    par(mar=c(1,1,1,1))
+    # par(mar=c(1,1,1,1))
     biplot(pfs_scale[[num]][,1:2],loading_scale[[num]][,1:2],
            xlab="1st component",ylab="2nd component")
     abline(v=0,h=0)
     # title(main=paste("Partial Facor scores and variable loadings (No.", num," data table)"))
   }
   else if(pfs){
-    par(mar=c(1,1,1,1))
+    # par(mar=c(1,1,1,1))
     plot(x$pfs[[num]][,1:2],xaxt="n", yaxt="n",xlab="1st component",ylab="2nd component",
          bty="n",cex=1.5,pch = 17,col = "red")
     axis(side=1,pos = 0)
@@ -47,7 +46,7 @@ plot.mfa <- function(x, cfs = TRUE, pfs = FALSE, pfl = FALSE, num=1,eig=FALSE,..
     title(main=paste("Partial facor scores (No.", num," data table)" ))
   }
   else if(pfl){
-    par(mar=c(1,1,1,1))
+    # par(mar=c(1,1,1,1))
     plot(x$pfl[[num]][,1:2],xaxt="n", yaxt="n",xlab="1st component",ylab="2nd component",
          bty="n",cex=1.5,pch = 15,col = "red")
     axis(side=1,pos = 0)
@@ -66,7 +65,7 @@ plot_eig <- function(x,...){
   eigs=round(x$eigen,2)
   barplot(eigs,main="Histogram of Eigenvalues ",col = colors, horiz=TRUE,
           names.arg =paste(eigs) )
-  
+
 }
 # auxiliary functions for plot.mfa() method
 
