@@ -14,6 +14,11 @@ devtools::install(pkg = pkg)
 
 library(MFA01)
 
-a <- MFA()
-a
 
+# --------------------below is function testing
+# a <- MFA()
+# a
+#
+# x <- matrix(1:100, nrow=10, ncol=10)
+# s1 <- list(1:3,5:6,7:10)
+# MFA(x,s1)
