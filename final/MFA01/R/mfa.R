@@ -71,6 +71,7 @@ check_n <- function(n){
     if (n <= 0 | !is.numeric(n)) {
     stop("\nargument 'ncomps' must be a positive integer")
     }
+    else{TRUE}
   } else {
   TRUE
   }
