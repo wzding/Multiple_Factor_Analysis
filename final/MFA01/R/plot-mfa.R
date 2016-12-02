@@ -16,7 +16,7 @@
 #'  }
 #'
 
-plot.mfa <- function(x, cfs = TRUE, pfs = FALSE, pfl = FALSE, num=1,eig=FALSE,...) {
+plot.mfa <- function(x, cfs = TRUE, pfs = FALSE, pfl = FALSE, num=1, eig=FALSE,...) {
   plot(x$cfs[,1:2],xaxt="n", yaxt="n",
        xlab="1st component",ylab="2nd component",
        bty="n",cex=1.5,pch = 19,col = "red")
