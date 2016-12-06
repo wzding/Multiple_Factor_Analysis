@@ -4,9 +4,9 @@
 \alias{bootStrap}
 \title{bootstrap}
 \usage{
-bootStrap(x, K = 10, L = 1000, ...)
+bootStrap(x, K = 10, L = 1000)
 
-bootStrap(x, K = 10, L = 1000, ...)
+bootStrap(x, K = 10, L = 1000)
 }
 \arguments{
 \item{x}{an object of class \code{"mfa"}}

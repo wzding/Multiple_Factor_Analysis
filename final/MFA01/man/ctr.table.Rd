@@ -4,14 +4,14 @@
 \alias{ctr.table}
 \title{contribution method}
 \usage{
-ctr.table(x, table = NULL, comp = NULL, ...)
+ctr.table(x, table = NULL, comp = NULL)
 }
 \arguments{
 \item{x}{an R object}
 
-\item{comp}{which component to analyze}
+\item{table}{which table/block to analyze}
 
-\item{var}{which table/block to analyze}
+\item{comp}{which component to analyze}
 }
 \description{
 Summarizes contribution of a table/block to a dimension

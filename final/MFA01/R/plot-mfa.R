@@ -5,6 +5,7 @@
 #' @param pfs whether to plot partial factor scores
 #' @param pfl whether to plot factor loadings
 #' @param num number of data table/block to plot
+#' @param eig whether to plot a bar plot of eigenvalues
 #' @param \dots arguments to be passed to/from other methods
 #' @export
 #' @examples

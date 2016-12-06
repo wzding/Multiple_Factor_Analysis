@@ -3,10 +3,10 @@
 #' @param x an R object
 #' @param digit number of decimal digit in print output
 #' @export
-ev.summary <- function(x,digit=3, ...) UseMethod("ev.summary")
+ev.summary <- function(x,digit=3) UseMethod("ev.summary")
 
 #' @export
-ev.summary.mfa <- function(x,digit=3, ...) {
+ev.summary.mfa <- function(x,digit=3) {
   options(digits=digit)
   Eigenvalue <- round(x$eigen,2)
   Component <- 1:length(Eigenvalue)
@@ -25,10 +25,10 @@ ev.summary.mfa <- function(x,digit=3, ...) {
 #' @param obs which observation to analyze
 #' @param comp which component to analyze
 #' @export
-ctr.obs <- function(x,obs=NULL,comp=NULL,...) UseMethod("ctr.obs")
+ctr.obs <- function(x,obs=NULL,comp=NULL) UseMethod("ctr.obs")
 
 #' @export
-ctr.obs.mfa <- function(x,obs=NULL,comp=NULL,  ...) {
+ctr.obs.mfa <- function(x,obs=NULL,comp=NULL) {
   t <- x$cfs^2/nrow(x$cfs)
   ctr <- sweep(t,2,colSums(t),'/')
   if (is.null(obs) & is.null(comp)){
@@ -49,10 +49,10 @@ ctr.obs.mfa <- function(x,obs=NULL,comp=NULL,  ...) {
 #' @param var which variable to analyze
 #' @param comp which component to analyze
 #' @export
-ctr.var <- function(x, var=NULL,comp=NULL,  ...) UseMethod("ctr.var")
+ctr.var <- function(x, var=NULL,comp=NULL) UseMethod("ctr.var")
 
 #' @export
-ctr.var.mfa <- function(x, var=NULL,comp=NULL,  ...) {
+ctr.var.mfa <- function(x, var=NULL,comp=NULL) {
   t <- x$fl^2
   ctr <- sweep(t,1,x$weights,'*')
   if (is.null(var) & is.null(comp)){
@@ -71,13 +71,13 @@ ctr.var.mfa <- function(x, var=NULL,comp=NULL,  ...) {
 #' @title contribution method
 #' @description Summarizes contribution of a table/block to a dimension
 #' @param x an R object
-#' @param var which table/block to analyze
+#' @param table which table/block to analyze
 #' @param comp which component to analyze
 #' @export
-ctr.table <- function(x, table = NULL,comp=NULL,...) UseMethod("ctr.table")
+ctr.table <- function(x, table = NULL,comp=NULL) UseMethod("ctr.table")
 
 #' @export
-ctr.table.mfa <- function(x, table = NULL,comp=NULL,...) {
+ctr.table.mfa <- function(x, table = NULL,comp=NULL) {
   t <- ctr.var(x)
   idx <- x$index_lists
   ctr.slt <- split(data.frame(t),idx)
@@ -177,7 +177,7 @@ Lg_table <- function(dataset, sets = list(1:3, 4:5, 6:10)){
 #' @param K bootstrap sample size
 #' @param L number of bootstrap samples
 #' @export
-bootStrap <- function(x, K = 10, L = 1000,...) UseMethod("bootStrap")
+bootStrap <- function(x, K = 10, L = 1000) UseMethod("bootStrap")
 #' @examples
 #'  \dontrun{
 #'  # create a \code{"mfa"} and plot its common factor scores
@@ -186,7 +186,7 @@ bootStrap <- function(x, K = 10, L = 1000,...) UseMethod("bootStrap")
 #'  bootstrap(a)
 #'  }
 #' @export
-bootStrap <- function(x, K = 10, L = 1000,...){
+bootStrap <- function(x, K = 10, L = 1000){
   n <- nrow(x$cfs)      # num of observations
   R <- ncol(x$cfs)       # rank
   KK <- max(x$index_lists)      # maximum num of components

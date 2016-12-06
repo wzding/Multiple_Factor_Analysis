@@ -18,6 +18,8 @@
 
 \item{num}{number of data table/block to plot}
 
+\item{eig}{whether to plot a bar plot of eigenvalues}
+
 \item{\dots}{arguments to be passed to/from other methods}
 }
 \description{

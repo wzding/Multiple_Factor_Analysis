@@ -4,7 +4,7 @@
 \alias{ctr.obs}
 \title{contribution method}
 \usage{
-ctr.obs(x, obs = NULL, comp = NULL, ...)
+ctr.obs(x, obs = NULL, comp = NULL)
 }
 \arguments{
 \item{x}{an R object}
