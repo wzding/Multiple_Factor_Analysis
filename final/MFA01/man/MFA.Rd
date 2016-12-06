@@ -2,11 +2,14 @@
 % Please edit documentation in R/mfa.R
 \name{MFA}
 \alias{MFA}
+\alias{is.mfa}
 \title{Multiple Factor Analysis}
 \usage{
 MFA(data = get(load("data/wine.rda")), sets = list(2:7, 8:13, 14:19, 20:24,
   25:30, 31:35, 36:39, 40:45, 46:50, 51:54), ncomps = NULL, center = TRUE,
   scale = TRUE)
+
+is.mfa(x)
 }
 \arguments{
 \item{data}{data set (matrix or data frame)}
@@ -18,6 +21,8 @@ MFA(data = get(load("data/wine.rda")), sets = list(2:7, 8:13, 14:19, 20:24,
 \item{center}{either a logical value or a numeric vector of length equal to the number of active variables in the analysis}
 
 \item{scale}{either a logical value or a numeric vector of length equal to the number of active variables in the analysis}
+
+\item{x}{an R object}
 }
 \value{
 an object of class \code{"mfa"} with the following elements:

@@ -161,18 +161,15 @@ print.mfa <- function(x, ...) {
   cat("Weight of tables:", "\n",unique(x$weights), "\n")
   cat("First two eigenvalues: ", x$eigen[1:2], "\n")
   cat("First component of common factor scores: ","\n",x$cfs[,1], "\n")
-  cat("Facor loadings for the first table (1st component): ", "\n",
-      x$fl[1:ncol(x$assessors[[1]]),1], "\n")
-  # cat("Partial factor score for the first table (1st component): ", x$pfs[[1]], "\n")
   invisible(x)
 }
 
-#' @rdname mfa
+#' @rdname MFA
 #' @param x an R object
 #' @export
-#is.mfa <- function(x) {
- # is(x, "mfa")
-#}
+is.mfa <- function(x) {
+is(x, "mfa")
+}
 
 
 ############### Below is function testing
