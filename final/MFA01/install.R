@@ -21,11 +21,11 @@ library(MFA01)
 
 
 # --------------------below is function testing
-# a <- MFA()
-# a
-# 
-# a <- MFA(ncomps = 2)
-# a
+a <- MFA()
+a
+
+a <- MFA(ncomps = 2)
+a
 # x <- matrix(1:100, nrow=10, ncol=10)
 # s1 <- list(1:3,5:6,7:10)
 # MFA(x,s1)
